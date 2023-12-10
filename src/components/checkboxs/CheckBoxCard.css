@@ -1,0 +1,86 @@
+.CheckBoxCard {
+  width: 250px;
+  height: 288px;
+  background-color: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid var(--base-100-dark, #292929);
+  background: var(--base-50-dark, #1e1e1e);
+}
+
+.CheckBoxCard h1 {
+  color: var(--base-900-dark, #fefefe);
+
+  /* text-xl/font-bold$ */
+  font-family: Space Grotesk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px; /* 160% */
+  width: 168px;
+}
+
+.CheckBoxCard p {
+  color: var(--base-800-dark, #cfcfcf);
+  text-align: center;
+
+  /* text-base/font-medium$ */
+  font-family: Space Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  width: 210px;
+}
+
+.CheckBoxCard .checkmark {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  width: 100%;
+  height: 100%;
+  margin-top: 5px;
+  margin-right: 9px;
+}
+
+.CheckBoxCard .checkmark div {
+  width: 15px;
+  height: 15px;
+  /* background-color: white; */
+  border: 1px solid #515151;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.CheckBoxCard img{
+    width: 178px;
+height: 116px;
+flex-shrink: 0;
+}
+
+
+.CheckBoxCard:hover {
+  width: 250px;
+  height: 288px;
+  background-color: #292929;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid #515151;
+}
+
+.act {
+  background: linear-gradient(black, black) padding-box,
+    linear-gradient(to right, #fbda61, #ff5acd) border-box;
+  border: 1px solid transparent;
+}
