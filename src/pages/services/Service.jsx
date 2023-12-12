@@ -1,5 +1,7 @@
+// Service.jsx
 import CheckBoxCard from "../../components/checkboxs/CheckBoxCard";
 import "./service.css";
+
 const Service = () => {
   return (
     <>
@@ -12,11 +14,11 @@ const Service = () => {
         </div>
 
         <div className="checkBoxContainer">
-          <div className="checkbox"></div>
-          <CheckBoxCard />
-          <CheckBoxCard />
-          <CheckBoxCard />
+          <CheckBoxCard title="Team Projects" description="Hire developers for team projects." />
+          <CheckBoxCard title="Another Title" description="Another description." />
+          <CheckBoxCard title="Yet Another Title" description="Yet another description." />
         </div>
+
         <button className="service_btn">Next</button>
 
         <div className="container_footer">

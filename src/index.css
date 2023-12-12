@@ -1,8 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=ReceptsNFW01-Regular:wght@400&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* <div className="progress-bar-section">
+<div className="logo-container">
+  <img className="logo" alt="" src="/logo-2.svg" />
+  <div className="company-name">Tublian</div>
+</div>
 
-*{
-    background-color: #121212;
-}
-
-
+<div className="progress-steps">
+  <div className="progress-step active">1: Get Started</div>
+  <div className="progress-step active">2: Create Account</div>
+  <div className="progress-step active">3: Account Setup</div>
+  <div className="progress-step">4: Payment</div>
+</div>
+</div> */
