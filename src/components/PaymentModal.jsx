@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './PaymentModal.css';
 import closeImg from '../assets/close.png';
 import herologo from '../assets/herologo.png';
@@ -10,9 +10,19 @@ import Button from './buttons/Default/Button.jsx';
 import SuccessModal from './SuccessModal'; // Import the SuccessModal component
 
 const PaymentModal = ({ isOpen, onClose }) => {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [selectedOption, setSelectedOption] = useState('');
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+    const isDesktop = windowWidth < 390;
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
     };
@@ -80,19 +90,19 @@ const PaymentModal = ({ isOpen, onClose }) => {
                     </div>
                     <div className="user-payment-details">
                         <h3>Payment Details</h3>
-                        <EmailInput name="Email" width="28rem" fontsize="15px" /><br />
-                        <Input name="Card Holder" width="28rem" type="text" fontsize="15px" /><br />
-                        <CardInput name="Card Number" width="28rem" type="number" fontsize="15px" /><br />
+                        <EmailInput width={isDesktop? "20rem" :"28rem"} fontsize={isDesktop?"16px" : ""} name="Email"  /><br />
+                        <Input name="Card Holder" type="text" width={isDesktop? "20rem" :"28rem"} fontsize={isDesktop?"16px" : ""} /><br />
+                        <CardInput name="Card Number"  type="number" width={isDesktop? "20rem" :"28rem"} fontsize={isDesktop?"16px" : ""} /><br />
                         <div className="expiry">
-                            <Input name="MM-YY" width="13rem" type="number" fontsize="15px" />
-                            <Input name="CVC" width="13rem" type="number" fontsize="15px" />
+                            <Input name="MM-YY" type="number" width={isDesktop? "10rem" :"13rem"} fontsize={isDesktop?"16px" : "15px"} />
+                            <Input name="CVC" width={isDesktop? "10rem" :"13rem"} fontsize={isDesktop?"16px" : "15px"} type="number" />
                         </div><br />
-                        <Input name="Country" width="28rem" type="text" fontsize="15px" /><br />
-                        <p style={{ fontSize: '13px' }}>By clicking below, you agree to our Terms, Privacy Policy and Automatic Renewal.
+                        <Input name="Country" width={isDesktop? "20rem" :"28rem"} fontsize={isDesktop?"16px" : "15px"} type="text"  /><br />
+                        <p style={{ fontSize: '12px' }}>By clicking below, you agree to our Terms, Privacy Policy and Automatic Renewal.
                             Tublian will charge you $49.99 (plus Tax) each month until you cancel you
                             subscription in account settings.</p>
                         <br />
-                        <Button name="Pay $49.99" width="28rem" fontsize="11px" onClick={handlePay} />
+                        <Button name="Pay $49.99" width={isDesktop? "20rem" :"28rem"} fontsize={isDesktop?"11px" : "11px"} onClick={handlePay} />
                     </div>
                 </div>
             </div>

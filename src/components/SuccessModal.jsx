@@ -14,7 +14,7 @@ const SuccessModal = ({ isOpen, onClose }) => {
                 <img src={success} alt="success"  />
                 <h2>Payment Successful!</h2>
                 <p>Your payment has been processed successfully.</p>
-                <Button name="Proceed" onClick={onClose}/>
+                <Button name="Proceed" width="13rem" fontsize="13px" onClick={onClose}/>
             </div>
         </div>
     );
