@@ -45,33 +45,34 @@ const Input = (props) => {
             marginTop: '3px',
         },
     };
+    
     const [isValid, setIsValid] = useState(true);
     const [showError, setShowError] = useState(false);
     const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = (e) => {
         const value = e.target.value.trim();
-        const pattern = /^[A-Za-z0-9\s]+$/;
+
+        // Remove non-numeric characters and check if the remaining length is 16
+        const numericValue = value.replace(/\D/g, '');
+        const isValidInput = numericValue.length === 16 || numericValue === '';
 
         setInputValue(value);
 
-        if (value === '') {
+        if (isValidInput) {
             setIsValid(true);
             setShowError(false);
-        } else if (!pattern.test(value)) {
+            props.onChange(numericValue); // Send only numeric value to parent
+        } else {
             setIsValid(false);
             setShowError(true);
-        } else {
-            setIsValid(true);
-            setShowError(false);
         }
-        props.onChange(value);
     };
 
     let hintMessage = null;
     let hintColor = null;
     if (showError) {
-        hintMessage = 'Please enter only letters';
+        hintMessage = 'Enter a valid Card Number';
         hintColor = 'red';
     } else if (inputValue !== '') {
         hintMessage = '';

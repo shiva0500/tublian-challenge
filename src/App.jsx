@@ -1,27 +1,19 @@
-import "./index.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Service from "./pages/services/Service";
-import CheckBoxCard from "./components/checkboxs/CheckBoxCard";
-import PaymentSuccess from "./pages/paymentsuccess/paymentsuccess";
-import PaymentPlan from "./pages/paymentplan/PaymentPlan";
-
+import React from 'react'
+import Hero from './pages/Hero'
+import { Routes, Route } from 'react-router-dom'
+import CreatePage from './pages/CreatePage'
+import AccountSetup from './pages/AccountSetup'
+import Payment from './pages/Payment'
 
 const App = () => {
   return (
-    <>
-    
-      <Router>
-        <Routes>
-          <Route path="/service" element={<Service />} />
-          <Route path="/checkbox" element={<CheckBoxCard />} />
-          <Route path="/paysuc" element={<PaymentSuccess />} />
-          <Route path="/payplan" element={<PaymentPlan />} />
+    <Routes>
+      <Route path="/" element={<Hero/>} />
+      <Route path="/create" element={<CreatePage/>} />
+      <Route path="/account-setup" element={<AccountSetup/>} />
+      <Route path="/payment" element={<Payment/>} />
+    </Routes>
+  )
+}
 
-
-        </Routes>
-      </Router>
-    </>
-  );
-};
-
-export default App;
+export default App

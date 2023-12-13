@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-// import './Input.css';
 import { PiWarningCircleBold, PiCheckCircleBold } from "react-icons/pi";
 
-const Input = (props) => {
+const EmailInput = (props) => {
     const inputStyles = {
         Input: {
             width : props.width || '30rem',
@@ -51,7 +50,7 @@ const Input = (props) => {
 
     const handleInputChange = (e) => {
         const value = e.target.value.trim();
-        const pattern = /^[A-Za-z0-9\s]+$/;
+        const pattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/;
 
         setInputValue(value);
 
@@ -71,7 +70,7 @@ const Input = (props) => {
     let hintMessage = null;
     let hintColor = null;
     if (showError) {
-        hintMessage = 'Please enter only letters';
+        hintMessage = 'Please enter a valid email address';
         hintColor = 'red';
     } else if (inputValue !== '') {
         hintMessage = '';
@@ -79,14 +78,14 @@ const Input = (props) => {
     }
 
     return (
-        <div>
-            <div className='Input' style={inputStyles.Input}>
+        <div className='InputContainer'>
+            <div className='Input'  style={inputStyles.Input}>
                 <input
-                    type={props.type}
+                    type='text'
                     placeholder={props.name}
                     value={inputValue}
-                    onChange={handleInputChange}
                     style={inputStyles.input}
+                    onChange={handleInputChange}
                 />
                 {inputValue && !isValid && <PiWarningCircleBold size={30} color='#F26663' />}
                 {inputValue && isValid && <PiCheckCircleBold size={30} color='#76F368' />}
@@ -96,4 +95,4 @@ const Input = (props) => {
     );
 };
 
-export default Input;
+export default EmailInput;

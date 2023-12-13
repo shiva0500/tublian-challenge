@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import React, { useState } from 'react';
 import './PasswordInput.css';
 import { PiCheckCircleBold, PiEyeSlash, PiEyeLight } from 'react-icons/pi';
 
@@ -38,38 +38,38 @@ const PasswordInput = () => {
                     onChange={handlePasswordChange}
                 />
                 {showPassword ? (
-                    <PiEyeLight color='#888888' onClick={togglePasswordVisibility} size={10} />
+                    <PiEyeLight color='#888888' onClick={togglePasswordVisibility} size={30} />
                 ) : (
-                    <PiEyeSlash color='#888888' onClick={togglePasswordVisibility} size={10} />
+                    <PiEyeSlash color='#888888' onClick={togglePasswordVisibility} size={30} />
                 )}
             </div>
             <div className="ValidationContainer">
                 <div className="ValidationColumn">
                     <div className="ValidationItem">
                         {validations.minLength ? (
-                            <PiCheckCircleBold color="#76F368" size={10} />
+                            <PiCheckCircleBold color="#76F368" size={20} />
                         ) : (
-                            <PiCheckCircleBold color="#414141" size={10} />
+                            <PiCheckCircleBold color="#414141" size={20} />
                         )}
-                        <span className='noting'>8 characters minimum</span>
+                        <span className='noting'>&nbsp;8 characters minimum&nbsp;&nbsp;</span>
                     </div>
                     <div className="ValidationItem">
                         {validations.uppercase ? (
-                            <PiCheckCircleBold color="#76F368" size={10} />
+                            <PiCheckCircleBold color="#76F368" size={20} />
                         ) : (
-                            <PiCheckCircleBold color="#414141" size={10} />
+                            <PiCheckCircleBold color="#414141" size={20} />
                         )}
-                        <span className='noting'>One uppercase</span>
+                        <span className='noting'>&nbsp;One uppercase</span>
                     </div>
                 </div>
                 <div className="ValidationColumn">
                     <div className="ValidationItem">
                         {validations.symbol ? (
-                            <PiCheckCircleBold color="#76F368" size={10} />
+                            <PiCheckCircleBold color="#76F368" size={20} />
                         ) : (
-                            <PiCheckCircleBold color="#414141" size={10} />
+                            <PiCheckCircleBold color="#414141" size={20} />
                         )}
-                        <span className='noting'>One symbol</span>
+                        <span className='noting'>&nbsp; One symbol</span>
                     </div>
                 </div>
             </div>

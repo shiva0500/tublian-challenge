@@ -3,14 +3,14 @@
 .button {
     background-color: #FDD649;
     color: #121212;
-    font-size: 16;
+    font-size: 22px;
     font-family: 'Space Grotesk';
     font-weight: 500;
     text-align: center;
     word-wrap: break-word;
     cursor: pointer;
-    width: 20rem;
-    height: 2rem;
+    width: 30rem;
+    /* height: 2rem; */
     border-radius: 5rem;
     border: none;
     padding: 0.5rem;
