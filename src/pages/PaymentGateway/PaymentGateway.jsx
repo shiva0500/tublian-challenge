@@ -1,7 +1,10 @@
-import "./PaymentPlan.css";
-const PaymentPlan = () => {
+import "./PaymentGateway.css"
+
+
+const PaymentGateway = () => {
   return (
-    <div className="payment-plan-container">
+    <>
+         <div className="payment-plan-container">
       <div className="header-section">
         <p className="section-title">Payment Plan</p>
         <p className="section-description">
@@ -78,7 +81,8 @@ const PaymentPlan = () => {
         <div className="footer-link">Terms</div>
       </div>
     </div>
-  );
-};
+    </>
+  )
+}
 
-export default PaymentPlan;
+export default PaymentGateway
