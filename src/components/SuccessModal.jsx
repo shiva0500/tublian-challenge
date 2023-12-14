@@ -22,7 +22,6 @@ const useSuccessViewModel = () => {
 
   useEffect(() => {
     if (successModel.isOpen) {
-      // Additional logic can be added on modal open
     }
   }, [successModel.isOpen]);
 
