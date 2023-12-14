@@ -1,0 +1,19 @@
+.GoogleButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fontsize: 22px;
+  fontfamily: "Space Grotesk";
+  fontweight: 400;
+  textalign: center;
+  word-wrap: break-word;
+  cursor: pointer;
+  width: 30rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.GoogleButton:hover {
+  background-color: #fbda61;
+  color: #ff5acd;
+}

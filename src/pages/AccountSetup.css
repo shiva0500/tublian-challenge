@@ -1,0 +1,103 @@
+/* AccountSetup.css */
+
+/* AccountSetup Component */
+
+.account {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.account-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 15%;
+  width: 99%;
+  margin-right: 0;
+  margin-top: 50px;
+  justify-content: space-around;
+}
+
+.account-header img {
+  margin-left: -45px;
+}
+
+.account-header ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.account-header ul li {
+  margin: 0 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  color: #696969;
+}
+
+.account-header ul li.active,
+.account-header ul li.create-active,
+.account-header ul li.account-active,
+.account-header ul li.payment-active {
+  background: -webkit-linear-gradient(0deg, #fbda61, #ff5acd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.account-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 70%;
+  width: 99%;
+  margin-right: 0;
+  margin-top: 50px;
+  color: white;
+}
+
+.uses {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 15%;
+  width: 50%;
+  margin-right: 0;
+  margin-top: 90px;
+  justify-content: space-around;
+}
+
+.account-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 15%;
+  width: 99%;
+  margin-right: 0;
+  margin-top: 50px;
+  color: white;
+  justify-content: space-around;
+}
+
+.account-footer ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.account-footer li {
+  margin: 0 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  color: #414141;
+}
