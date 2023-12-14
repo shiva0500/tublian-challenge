@@ -1,5 +1,3 @@
-// Model: Not applicable in the context of a simple React component
-// It would be implemented separately if there is complex data logic.
 
 import React, { useEffect, useState } from 'react';
 import herologo from '../assets/herologo.png';
@@ -18,12 +16,11 @@ const AccountSetup = () => {
     const [selectedProjects, setSelectedProjects] = useState([]);
 
     const handleNextClick = () => {
-        // ViewModel: Handle navigation logic or other actions
+        
         navigate('/payment');
     };
 
     const handleProjectSelection = (project) => {
-        // ViewModel: Handle project selection logic
         const updatedProjects = [...selectedProjects];
         const index = updatedProjects.indexOf(project);
         if (index !== -1) {
@@ -36,7 +33,6 @@ const AccountSetup = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            // ViewModel: Handle window resize logic
             setWindowWidth(window.innerWidth);
         };
 
@@ -51,7 +47,6 @@ const AccountSetup = () => {
 
     return (
         <div className='account-container'>
-            {/* View: Display UI */}
             <div className="account-header">
                 <img src={herologo} height={40} alt="" />
                 <ul>
@@ -65,7 +60,6 @@ const AccountSetup = () => {
                 <h1>How are you planning to use Tublian?</h1>
                 <p>We will customize your experience based on your option.</p>
                 <div className="usage-cards">
-                    {/* View: Render CheckBoxCards */}
                     <CheckBoxCard
                         img={img1}
                         title="Team Projects"
@@ -91,7 +85,6 @@ const AccountSetup = () => {
                 <br />
                 <br />
                 <br />
-                {/* View: Render DefaultButton */}
                 <DefaultButton
                     width={isDesktop ? "20rem" : "30rem"}
                     fontsize={isDesktop ? "16px" : ""}
