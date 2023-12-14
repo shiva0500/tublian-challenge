@@ -7,23 +7,44 @@ import Input from "../components/inputs/Input/Input";
 import DefaultButton from "../components/buttons/Default/DefaultButton";
 import { useNavigate } from "react-router-dom";
 
-const Hero = () => {
-  const navigate = useNavigate();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+// Model
+const initialUserModel = {
+  firstName: "",
+  lastName: "",
+};
+
+// ViewModel
+const useHeroViewModel = (initialModel) => {
+  const [model, updateModel] = useState(initialModel);
 
   const handleFirstNameChange = (value) => {
-    setFirstName(value);
+    updateModel({ ...model, firstName: value });
   };
 
   const handleLastNameChange = (value) => {
-    setLastName(value);
+    updateModel({ ...model, lastName: value });
   };
 
   const handleProceedClick = () => {
-    navigate("/create", { state: { firstName, lastName } });
+    // Add any additional ViewModel logic here if needed
+    navigate("/create", { state: model });
   };
+
+  return {
+    model,
+    handleFirstNameChange,
+    handleLastNameChange,
+    handleProceedClick,
+  };
+};
+
+// View
+const Hero = () => {
+  const navigate = useNavigate();
+  const { model, handleFirstNameChange, handleLastNameChange, handleProceedClick } = useHeroViewModel(initialUserModel);
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -35,6 +56,7 @@ const Hero = () => {
   }, []);
 
   const isDesktop = windowWidth < 1220;
+
   return (
     <div className="hero">
       <div className="hero-left">

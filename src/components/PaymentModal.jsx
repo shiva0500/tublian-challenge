@@ -7,36 +7,83 @@ import Input from "../components/inputs/Input/Input";
 import EmailInput from "../components/inputs/Input/EmailInput";
 import CardInput from "./inputs/Input/CardInput.jsx";
 import DefaultButton from "./buttons/Default/DefaultButton.jsx";
-import SuccessModal from "./SuccessModal"; // Import the SuccessModal component
+import SuccessModal from "./SuccessModal";
 
-const PaymentModal = ({ isOpen, onClose }) => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+// Model
+const initialPaymentModel = {
+  isOpen: false,
+  selectedOption: "",
+  isSuccessModalOpen: false,
+  windowWidth: window.innerWidth,
+};
+
+// ViewModel
+const usePaymentViewModel = () => {
+  const [paymentModel, setPaymentModel] = useState(initialPaymentModel);
+
+  const openModal = () => {
+    setPaymentModel((prevModel) => ({ ...prevModel, isOpen: true }));
+  };
+
+  const closeModal = (state) => {
+    setPaymentModel((prevModel) => ({
+      ...prevModel,
+      isOpen: false,
+      isSuccessModalOpen: state,
+    }));
+  };
+
+  const handleResize = () => {
+    setPaymentModel((prevModel) => ({
+      ...prevModel,
+      windowWidth: window.innerWidth,
+    }));
+  };
+
+  const handleOptionChange = (e) => {
+    setPaymentModel((prevModel) => ({ ...prevModel, selectedOption: e.target.value }));
+  };
+
+  const handlePay = () => {
+    closeModal(true);
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const isDesktop = windowWidth < 390;
-  const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
 
-  const handlePay = () => {
-    onClose(true);
+  const isDesktop = paymentModel.windowWidth < 390;
+
+  return {
+    paymentModel,
+    isDesktop,
+    openModal,
+    closeModal,
+    handleOptionChange,
+    handlePay,
   };
+};
+
+// View
+const PaymentModal = () => {
+  const {
+    paymentModel,
+    isDesktop,
+    openModal,
+    closeModal,
+    handleOptionChange,
+    handlePay,
+  } = usePaymentViewModel();
 
   const modalStyle = {
-    display: isOpen ? "block" : "none",
+    display: paymentModel.isOpen ? "block" : "none",
   };
 
   return (
-    <div className={`modal-overlay ${isOpen ? "show" : ""}`} style={modalStyle}>
+    <div className={`modal-overlay ${paymentModel.isOpen ? "show" : ""}`} style={modalStyle}>
       <div className="modal">
         <div className="header">
           <img src={herologo} height={20} alt="" />
@@ -73,25 +120,25 @@ const PaymentModal = ({ isOpen, onClose }) => {
             <h3>Payment Method</h3>
             <p>Choose how you’d like to pay.</p>
             <label className="payment-checkbox">
-              <input
-                type="radio"
-                value="option1"
-                checked={selectedOption === "option1"}
-                onChange={handleOptionChange}
-              />
-              &nbsp; &nbsp; Credit Card
-            </label>
-            <label className="payment-checkbox">
-              <input
-                type="radio"
-                value="option2"
-                checked={selectedOption === "option2"}
-                onChange={handleOptionChange}
-              />{" "}
-              &nbsp; &nbsp;
-              <img src={googleicon} alt="" />
-              Pay
-            </label>
+          <input
+            type="radio"
+            value="option1"
+            checked={paymentModel.selectedOption === "option1"}
+            onChange={handleOptionChange}
+          />
+          &nbsp; &nbsp; Credit Card
+        </label>
+        <label className="payment-checkbox">
+          <input
+            type="radio"
+            value="option2"
+            checked={paymentModel.selectedOption === "option2"}
+            onChange={handleOptionChange}
+          />{" "}
+          &nbsp; &nbsp;
+          <img src={googleicon} alt="" />
+          Pay
+        </label>
             <div className="checks"></div>
           </div>
           <div className="user-payment-details">
@@ -145,11 +192,11 @@ const PaymentModal = ({ isOpen, onClose }) => {
             </p>
             <br />
             <DefaultButton
-              name="Pay $49.99"
-              width={isDesktop ? "20rem" : "28rem"}
-              fontsize={isDesktop ? "11px" : "11px"}
-              onClick={handlePay}
-            />
+          name="Pay $49.99"
+          width={isDesktop ? "20rem" : "28rem"}
+          fontsize={isDesktop ? "11px" : "11px"}
+          onClick={handlePay}
+        />
           </div>
         </div>
       </div>

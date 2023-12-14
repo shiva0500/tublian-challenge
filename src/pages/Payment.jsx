@@ -7,31 +7,61 @@ import greentick from "../assets/tick-circle-green.png";
 import SuccessModal from "../components/SuccessModal";
 import "../mediaquery.css";
 
-const Payment = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+// ViewModel
+const usePaymentViewModel = () => {
+  const initialPaymentModel = {
+    isModalOpen: false,
+    showSuccessModal: false,
+    windowWidth: window.innerWidth,
+  };
+
+  const [paymentModel, setPaymentModel] = useState(initialPaymentModel);
 
   const openModal = () => {
-    setIsModalOpen(true);
+    setPaymentModel((prevModel) => ({ ...prevModel, isModalOpen: true }));
   };
 
   const closeModal = (state) => {
-    setIsModalOpen(false);
-    if (state) {
-      setShowSuccessModal(true);
-    }
+    setPaymentModel((prevModel) => ({
+      ...prevModel,
+      isModalOpen: false,
+      showSuccessModal: state,
+    }));
   };
+
+  const handleResize = () => {
+    setPaymentModel((prevModel) => ({
+      ...prevModel,
+      windowWidth: window.innerWidth,
+    }));
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const isDesktop = windowWidth < 1220;
+
+  const isDesktop = paymentModel.windowWidth < 1220;
+
+  return {
+    paymentModel,
+    isDesktop,
+    openModal,
+    closeModal,
+  };
+};
+
+// View
+const Payment = () => {
+  const {
+    paymentModel,
+    isDesktop,
+    openModal,
+    closeModal,
+  } = usePaymentViewModel();
+
   return (
     <div className="payment">
       <div className="account-header">
