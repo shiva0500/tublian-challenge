@@ -26,7 +26,6 @@ const useHeroViewModel = (initialModel) => {
   };
 
   const handleProceedClick = () => {
-    // Add any additional ViewModel logic here if needed
     navigate("/create", { state: model });
   };
 
